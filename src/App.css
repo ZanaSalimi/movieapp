@@ -69,3 +69,30 @@
 .time span{
     font-weight: 600;
 }
+.top-movies{
+    margin-top: 200px;
+}
+.top-movies-poster{
+    justify-content: space-between;
+}
+.poster-pic{
+    width: 252px;
+    height: 330px;
+    border-radius: 25px;
+    overflow: hidden;
+}
+.poster-pic img{
+    width: 252px;
+}
+.movie-txt{
+    font-size: 20px;
+}
+.movie-txt h4{
+    font-weight: 600;
+}
+.top-movies-head{
+    font-weight: 900;
+}
+.footer{
+    margin-top: 150px;
+}
