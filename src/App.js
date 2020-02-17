@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './main.scss';
 import Header from './components/Header'
 import Details from './components/Details'
 import TopMovies from './components/TopMovies';

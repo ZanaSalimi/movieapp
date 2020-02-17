@@ -7,7 +7,7 @@ export class Details extends Component {
                 <div className="d-flex details">
                     <div className="col col-md-4 col-lg-4 mr-5">
                         <div className="pic-details">
-                            <img src={Terminator} alt={Terminator} className="poster-img" />
+                            <img src={Terminator} alt={Terminator}  />
                         </div>
                     </div>
                     <div className="col">
