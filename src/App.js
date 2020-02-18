@@ -3,6 +3,7 @@ import './main.scss';
 import Header from './components/Header'
 import Details from './components/Details'
 import TopMovies from './components/TopMovies';
+import Loading from './components/Loading'
 import Footer from './components/Footer';
 
 export class App extends Component {
@@ -16,7 +17,7 @@ export class App extends Component {
   
   UNSAFE_componentWillMount(){
     this.setState({ loading: true });
-    fetch(`https://api.themoviedb.org/3/movie/550?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+    fetch(`https://api.themoviedb.org/3/movie/800?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
     .then(res => res.json())
     .then(data => 
       {
@@ -30,9 +31,7 @@ export class App extends Component {
   render() {
     if(this.state.loading){
       return(
-        <div className="container lead text-center">
-          loading...
-          </div>
+        <Loading />
         )
     }
     else{
