@@ -14,7 +14,17 @@ export class App extends Component {
       loading: false
     }
   }
-  
+  fetchAPI = (search) => {
+    this.setState({ loading: true });
+    fetch(`https://api.themoviedb.org/3/movie/${search}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+    .then(res => res.json())
+    .then(data => {
+      this.setState({ 
+        tmdb: data,
+        loading: false
+       });
+    })
+  }
   UNSAFE_componentWillMount(){
     this.setState({ loading: true });
     fetch(`https://api.themoviedb.org/3/movie/800?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
@@ -37,7 +47,7 @@ export class App extends Component {
     else{
       return (
         <div className="container">
-          <Header />
+          <Header search={this.fetchAPI} />
           <Details tmdb={this.state.tmdb} />
           <TopMovies />
           <Footer />
