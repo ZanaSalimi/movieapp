@@ -4,6 +4,13 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+a{
+    color: #333;
+    &:hover{
+        text-decoration: none;
+        color: #333;
+    }
+}
 .navbar{
     margin-top: 40px;
     padding: 0;
