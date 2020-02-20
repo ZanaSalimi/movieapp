@@ -20,7 +20,7 @@ class Details extends React.Component {
                             <div className="genre">
                                 <h2>GENRE</h2>
                                 <div className="tags">
-                                    {<Tag genres={genres} />}
+                                    { <Tag genres={genres} />}
                                 </div>
                             </div>
                             <div className="rating">

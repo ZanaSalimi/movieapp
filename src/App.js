@@ -15,15 +15,32 @@ export class App extends Component {
     }
   }
   fetchAPI = (search) => {
-    this.setState({ loading: true });
-    fetch(`https://api.themoviedb.org/3/movie/${search}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+    this.setState({ loading: true })
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=8dbc2af9039743bfdabfd4b6e58cedcc&language=en-US&query=${search}&page=1&include_adult=false`)
     .then(res => res.json())
     .then(data => {
-      this.setState({ 
-        tmdb: data,
-        loading: false
-       });
+      data.results.map((result) => {
+
+        if(search === result.title){
+          this.fetchMovieById(result)
+        }
+        else{
+          this.setState({loading: false})
+        }
+      })
     })
+  }
+  fetchMovieById= (result) => {
+    fetch(`https://api.themoviedb.org/3/movie/${result.id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+    .then(res => res.json())
+    .then(data => 
+      {
+        this.setState({ 
+          tmdb: data,
+          loading: false
+        });
+      }
+    )
   }
   UNSAFE_componentWillMount(){
     this.setState({ loading: true });
