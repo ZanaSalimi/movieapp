@@ -16,16 +16,15 @@ export class App extends Component {
   }
   fetchAPI = (search) => {
     this.setState({ loading: true })
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=8dbc2af9039743bfdabfd4b6e58cedcc&language=en-US&query=${search}&page=1&include_adult=false`)
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${search}&page=1&include_adult=false`)
     .then(res => res.json())
     .then(data => {
-      data.results.map((result) => {
-
+      data.results.map(result => {
         if(search === result.title){
-          this.fetchMovieById(result)
+          return this.fetchMovieById(result)
         }
         else{
-          this.setState({loading: false})
+          return this.setState({loading: false})
         }
       })
     })
@@ -55,7 +54,7 @@ export class App extends Component {
       }
       )
   }
-  render() {
+  render() {  
     if(this.state.loading){
       return(
         <Loading />
