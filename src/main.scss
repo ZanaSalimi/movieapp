@@ -106,9 +106,12 @@ a{
     margin-top: 150px;
 }
 .spin{
-    display: flex;
-    justify-content: center;
+    height: 200px;
+    position: relative;
     .spinner{
-        margin: 350px 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 50%);
     }
 }
