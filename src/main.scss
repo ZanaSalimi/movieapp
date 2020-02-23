@@ -4,6 +4,19 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+::-webkit-scrollbar {
+    width: 5px;
+    &-track {
+        background: #ffffff; 
+    }
+    &-thumb {
+        background: #333333;
+        border-radius: 50px;
+    }
+}
+
+  
+  
 a{
     color: #333;
     &:hover{
@@ -23,6 +36,9 @@ a{
     color: #B6B6B4;
     font-size: 15px;
     outline: none;
+}
+.form-control{
+    width: 290px;
 }
 .details{
     margin-top: 100px;
@@ -115,3 +131,25 @@ a{
         transform: translate(-50%, 50%);
     }
 }
+.suggestions {
+    box-shadow: 10px 10px 170px -59px rgba(0,0,0,0.62);
+    transition: 0.5s ease-in;
+    z-index: 999;
+    position: absolute;
+    max-height: 143px;
+    overflow: hidden scroll;
+    margin-top: 5px;
+    width: 290px;
+    option {
+        background-color: #fff;
+        padding: 0.3rem;
+        &:hover {
+            background-color: #333;
+            transition: 0.3s ease-in;
+            color: #fff;
+            cursor: pointer;
+          }  
+    }
+  }
+  
+    
