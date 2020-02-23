@@ -3,7 +3,7 @@ import Terminator from '../img/Terminator.jpg'
 export class MoviePoster extends Component {
     render() {
         return (
-            <div>
+            <div className="movie-poster">
                 <div className="poster-pic">
                     <img src={Terminator} alt={Terminator} />
                 </div>
