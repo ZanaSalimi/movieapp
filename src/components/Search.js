@@ -11,7 +11,8 @@ export class Search extends Component {
             fetch(`https://api.themoviedb.org/3/search/movie?api_key=8dbc2af9039743bfdabfd4b6e58cedcc&language=en-US&query=${this.state.search}&page=1&include_adult=false`)
             .then(res => res.json())
             .then(data => {
-                this.setState({ options: data.results.map(movie => movie.title) })
+                this.setState({ options: data.results.map((movie) => movie.title) })
+                console.log()
             })
         }
     }
@@ -21,6 +22,9 @@ export class Search extends Component {
     }
     movieSelect = (e) => {
         this.setState({ search: e.target.value })
+        setTimeout(() => {
+            this.props.search(this.state.search)
+        }, 10);
     }
     movieNames = () => {
         if(this.state.search !== ''){
