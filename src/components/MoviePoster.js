@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
-import Terminator from '../img/Terminator.jpg'
+import { Fragment } from 'react';
 export class MoviePoster extends Component {
     render() {
-        return (
-            <div className="movie-poster">
-                <div className="poster-pic">
-                    <img src={Terminator} alt={Terminator} />
+        return this.props.topmovies.map(movie => {
+            return <Fragment key={movie.id}>
+                <div className="movie-poster">
+                     <div className="poster-pic">
+                         <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+                     </div>
+                     <div className="movie-txt text-center mt-3">
+                         <h4>{movie.title}</h4>
+                         <p>{movie.release_date}</p>
+                     </div>
                 </div>
-                <div className="movie-txt text-center mt-3">
-                    <h4>Terminator</h4>
-                    <p>30,September,2019</p>
-                </div>
-            </div>
-        )
+            </Fragment>
+        })
     }
 }
 
