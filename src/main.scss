@@ -125,11 +125,18 @@ a{
 }
 .top-movies{
     margin-top: 200px;
+    overflow-x: hidden;
+
     &-head{
-        font-weight: 900;
+        display: inline-block;
+        h2{
+            font-weight: 900;
+        }
     }
     &-poster{
+        width: 1110px;
         justify-content: space-between;
+        transition: 0.5s ease-in-out;
     }
 }
 .movie-poster{
@@ -159,4 +166,12 @@ a{
 }
 .footer{
     margin-top: 150px;
+}
+.slide-btn{
+    border: none;
+    border-radius: 50px;
+    background-color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    margin: 10px;
 }
