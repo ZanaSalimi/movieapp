@@ -66,8 +66,8 @@ a{
             color: #fff;
             cursor: pointer;
           }  
-    }
   }
+}
 .details{
     margin-top: 100px;
 }
@@ -126,11 +126,18 @@ a{
 .top-movies{
     margin-top: 200px;
     overflow-x: hidden;
-
     &-head{
         display: inline-block;
         h2{
             font-weight: 900;
+        }
+        .slide-btn{
+            border: none;
+            border-radius: 50px;
+            background-color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            margin: 10px;
         }
     }
     &-poster{
@@ -166,12 +173,4 @@ a{
 }
 .footer{
     margin-top: 150px;
-}
-.slide-btn{
-    border: none;
-    border-radius: 50px;
-    background-color: #fff;
-    padding: 10px;
-    cursor: pointer;
-    margin: 10px;
 }

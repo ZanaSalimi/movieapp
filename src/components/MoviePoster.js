@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { Fragment } from 'react';
+import React, { Component, Fragment } from 'react'
+
 export class MoviePoster extends Component {
     render() {
-        return this.props.topmovies.map(movie => {
+        return this.props.topMovies.map(movie => {
             return <Fragment key={movie.id}>
                 <div className="movie-poster">
                      <div className="poster-pic">

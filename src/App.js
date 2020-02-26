@@ -10,11 +10,20 @@ export class App extends Component {
   constructor(props){
     super(props);
     this.state={
-      tmdb:[],
+      movie:[],
+      topMovies: [],
       loading: false
     }
   }
-  fetchAPI = (search) => {
+  fetch(url){
+    fetch(url).then(res=>res.json()).then(data =>{
+      this.setState({
+        movie: data,
+        loading: false
+      })
+    })
+  }
+  search = (search) => {
     this.setState({ loading: true })
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${search}&page=1&include_adult=false`)
     .then(res => res.json())
@@ -30,32 +39,23 @@ export class App extends Component {
     })
   }
   fetchMovieById= (result) => {
-    fetch(`https://api.themoviedb.org/3/movie/${result.id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
-    .then(res => res.json())
-    .then(data => 
-      {
-        this.setState({ 
-          tmdb: data,
-          loading: false
-        });
-      }
-    )
+    const url = `https://api.themoviedb.org/3/movie/${result.id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+    this.fetch(url)
+  }
+  topMovies = () => {
+    fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`)
+        .then(res => res.json())
+        .then(data => this.setState({ topMovies: data.results }))
   }
   UNSAFE_componentWillMount(){
     this.setState({ loading: true });
-    fetch(`https://api.themoviedb.org/3/movie/800?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
-    .then(res => res.json())
-    .then(data => 
-      {
-        this.setState({ 
-          tmdb: data,
-          loading: false
-         });
-      }
-      )
+    const url = `https://api.themoviedb.org/3/movie/800?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+    this.fetch(url)
+    this.topMovies()
   }
-  render() {  
-    if(this.state.loading){
+  render() { 
+    const { movie, topMovies, loading} = this.state; 
+    if(loading){
       return(
         <Loading />
         )
@@ -63,9 +63,9 @@ export class App extends Component {
     else{
       return (
         <div className="container">
-          <Header search={this.fetchAPI} />
-          <Details tmdb={this.state.tmdb} />
-          <TopMovies />
+          <Header search={this.search} />
+          <Details movie={movie} />
+          <TopMovies topMovies={topMovies} />
           <Footer />
       </div>
       )

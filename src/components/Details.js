@@ -3,7 +3,7 @@ import Tag from './Tag'
 
 class Details extends React.Component {
         render(){
-            const { title, overview, runtime, vote_average, genres, poster_path } = this.props.tmdb;
+            const { title, overview, runtime, vote_average, genres, poster_path } = this.props.movie;
             return (
                 <div>
                     <div className="d-flex details">
