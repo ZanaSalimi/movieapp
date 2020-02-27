@@ -74,7 +74,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 and uses [TMDB](https://www.themoviedb.org/) API 
 
-![](https://github.com/SKempin/reactjs-tmdb-app/blob/master/docs/images/tmdb-demo.gif)
+![](https://github.com/ZanaSalimi/movieapp/docs/images/Demo.gif)
 
 
 ## Installation
