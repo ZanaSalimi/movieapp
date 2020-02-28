@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import MoviePoster from './MoviePoster'
 import { Icon } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 
 export class TopMovies extends Component {
     constructor(props){
@@ -35,12 +36,14 @@ export class TopMovies extends Component {
                 </div>
 
                 <div className="d-flex top-movies-poster" style={{transform: `translateX(${this.state.x}%)`}}>
-                        <MoviePoster topMovies={this.props.topMovies} />
+                        <MoviePoster topMovies={this.props.topMovies.topMovies} />
                 </div>
 
             </div>
         )
     }
 }
-
-export default TopMovies
+const mapStateToProps = state => {
+    return state
+}
+export default connect(mapStateToProps)(TopMovies)

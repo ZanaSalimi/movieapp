@@ -5,16 +5,17 @@ import Details from './components/Details'
 import TopMovies from './components/TopMovies';
 import Loading from './components/Loading'
 import Footer from './components/Footer';
-
+import { connect } from 'react-redux'
+import { fetchMovie, topMovies } from './actions'
 export class App extends Component {
-  constructor(props){
+  /*constructor(props){
     super(props);
     this.state={
       movie:[],
       topMovies: [],
       loading: false
     }
-  }
+  }*/
   fetch(url){
     fetch(url).then(res=>res.json()).then(data =>{
       this.setState({
@@ -51,7 +52,8 @@ export class App extends Component {
     this.setState({ loading: true });
     const url = `https://api.themoviedb.org/3/movie/800?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     this.fetch(url)
-    this.topMovies()
+    this.props.fetchMovie(`https://api.themoviedb.org/3/movie/800?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+    this.props.topMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`)
   }
   render() { 
     const { movie, topMovies, loading} = this.state; 
@@ -64,13 +66,15 @@ export class App extends Component {
       return (
         <div className="container">
           <Header search={this.search} />
-          <Details movie={movie} />
-          <TopMovies topMovies={topMovies} />
+          <Details />
+          <TopMovies />
           <Footer />
       </div>
       )
     }
   }
 }
-
-export default App
+const mapStateToProps = state => {
+  return state
+}
+export default connect(mapStateToProps , { fetchMovie, topMovies })(App)

@@ -1,9 +1,9 @@
 import React from 'react'
 import Tag from './Tag'
-
+import { connect } from 'react-redux'
 class Details extends React.Component {
         render(){
-            const { title, overview, runtime, vote_average, genres, poster_path } = this.props.movie;
+            const { title, overview, runtime, vote_average, genres, poster_path } = this.props.fetchMovie.Movie;
             return (
                 <div>
                     <div className="d-flex details">
@@ -36,5 +36,7 @@ class Details extends React.Component {
         }
             
     }
-
-export default Details
+const mapStateToProps = state => {
+    return state
+}
+export default connect(mapStateToProps)(Details)
