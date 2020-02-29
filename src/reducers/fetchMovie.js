@@ -8,6 +8,11 @@ const fetchMovie = (state = initialState, action) => {
                 ...state,
                 Movie: action.payload
             }
+        case 'SEARCH_MOVIE':
+            return {
+                ...state,
+                Movie: action.payload
+            }    
         default:
             return state
     }
