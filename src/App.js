@@ -50,13 +50,11 @@ export class App extends Component {
   }
   UNSAFE_componentWillMount(){
     this.setState({ loading: true });
-    const url = `https://api.themoviedb.org/3/movie/800?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-    this.fetch(url)
     this.props.fetchMovie(`https://api.themoviedb.org/3/movie/800?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
     this.props.topMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`)
   }
   render() { 
-    const { movie, topMovies, loading} = this.state; 
+    const { loading } = this.props; 
     if(loading){
       return(
         <Loading />

@@ -4,7 +4,8 @@ export const fetchMovie = (url) => dispatch => {
     fetch(url).then(res=>res.json()).then(data =>{
         dispatch({
             type: FETCH_MOVIE,
-            payload: data
+            payload: data,
+            isLoaded: false
         })
       })
 } 
