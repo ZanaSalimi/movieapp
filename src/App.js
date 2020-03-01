@@ -13,7 +13,7 @@ export class App extends Component {
   }
   search = (search) => {
     this.setState({ loading: true })
-    this.props.searchMovie(search)
+    this.props.searchMovie(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${search}&page=1&include_adult=false`, search)
   }
   UNSAFE_componentWillMount(){
     this.setState({ loading: true });

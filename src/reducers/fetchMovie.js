@@ -11,7 +11,7 @@ const fetchMovie = (state = initialState, action) => {
         case 'SEARCH_MOVIE':
             return {
                 ...state,
-                Movie: action.payload
+                Movie: action.payload[0]
             }    
         default:
             return state

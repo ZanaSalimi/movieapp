@@ -1,4 +1,5 @@
-import { FETCH_MOVIE, TOP_MOVIES, SEARCH_MOVIE } from './actionTypes'
+import { FETCH_MOVIE, TOP_MOVIES, SEARCH_MOVIE, SEARCH_LIST } from './actionTypes'
+
 export const fetchMovie = (url) => dispatch => {
     fetch(url).then(res=>res.json()).then(data =>{
         dispatch({
@@ -7,7 +8,7 @@ export const fetchMovie = (url) => dispatch => {
             isLoaded: false
         })
       })
-} 
+}
 export const topMovies = (url) => dispatch => {
     fetch(url).then(res=>res.json()).then(data =>{
         dispatch({
@@ -16,21 +17,23 @@ export const topMovies = (url) => dispatch => {
         })
       })
 }
-export const searchMovie = (search) => dispatch => {
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${search}&page=1&include_adult=false`)
+export const searchMovie = (url, search) => dispatch => {
+    fetch(url)
     .then(res => res.json())
     .then(data => {
-      data.results.map(result => {
-        if(search === result.title){
-          fetch(`https://api.themoviedb.org/3/movie/${result.id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
-          .then(res => res.json())
-          .then(data => 
-            dispatch({
-                type: SEARCH_MOVIE,
-                payload: data
-            })
-            )
-        }
+      dispatch({
+        type: SEARCH_MOVIE,
+        payload: data.results.filter(result => result.title === search )
       })
     })
+}
+export const searchLists = (url) => dispatch => {
+  fetch(url)
+  .then(res => res.json())
+  .then(data => {
+    dispatch({
+      type: SEARCH_LIST,
+      payload: data.results.map(result => result)
+    })
+  })
 }
