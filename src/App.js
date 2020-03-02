@@ -6,23 +6,23 @@ import TopMovies from './components/TopMovies';
 import Loading from './components/Loading'
 import Footer from './components/Footer';
 import { connect } from 'react-redux'
-import { fetchMovie, topMovies, searchMovie } from './actions'
+import { fetchMovie, topMovies, searchMovie, loading } from './actions'
 export class App extends Component {
   state={
     loading: false
   }
   search = (search) => {
-    this.setState({ loading: true })
+    this.props.loading()
     this.props.searchMovie(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${search}&page=1&include_adult=false`, search)
   }
   UNSAFE_componentWillMount(){
-    this.setState({ loading: true });
-    this.props.fetchMovie(`https://api.themoviedb.org/3/movie/800?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
-    this.props.topMovies(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`)
+    this.props.loading()
+    this.props.fetchMovie()
+    this.props.topMovies()
   }
   render() { 
-    const { loading } = this.props; 
-    if(loading){
+    const { isLoaded } = this.props;
+    if(isLoaded){
       return(
         <Loading />
         )
@@ -40,6 +40,14 @@ export class App extends Component {
   }
 }
 const mapStateToProps = state => {
+  console.log(state)
   return state
 }
-export default connect(mapStateToProps , { fetchMovie, topMovies, searchMovie })(App)
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchMovie : () => dispatch(fetchMovie()),
+    topMovies : () => dispatch(topMovies()),
+    loading : () => dispatch(loading())
+  }
+}
+export default connect(mapStateToProps , mapDispatchToProps)(App)
