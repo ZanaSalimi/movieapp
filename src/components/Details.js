@@ -3,7 +3,7 @@ import Tag from './Tag'
 import { connect } from 'react-redux'
 class Details extends React.Component {
         render(){
-            const { title, overview, runtime, vote_average, genres, poster_path } = this.props.Movie;
+            const { title, overview, runtime, vote_average, genres, poster_path } = this.props.Movies.Movie;
             return (
                 <div>
                     <div className="d-flex details">

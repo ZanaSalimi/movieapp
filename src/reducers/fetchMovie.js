@@ -1,16 +1,19 @@
 const initialState = {
+    Movie: [],
+    topList: [],
     loading: true
 }
 const fetchMovie = (state = initialState, action) => {
     switch (action.type) {
-        /*case 'LOADING':
-            return{
-                ...state,
-                loading : true
-            }*/
         case 'FETCH_MOVIE':
             return {
-                ...action.payload,
+                ...state,
+                Movie: action.payload
+            }
+        case 'TOP_MOVIES':
+            return {
+                ...state,
+                topList: action.payload.results,
                 loading: false
             }
         /*case 'SEARCH_MOVIE':
@@ -18,6 +21,11 @@ const fetchMovie = (state = initialState, action) => {
                 ...state,
                 action.payload[0]
             ]    */
+        /*case 'LOADING':
+            return{
+                ...state,
+                loading : true
+            }*/
         default:
             return state
     }

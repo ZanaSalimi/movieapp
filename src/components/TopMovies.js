@@ -36,7 +36,7 @@ export class TopMovies extends Component {
                 </div>
 
                 <div className="d-flex top-movies-poster" style={{transform: `translateX(${this.state.x}%)`}}>
-                        <MoviePoster topMovies={this.props.topMovies} />
+                        <MoviePoster topList={this.props} />
                 </div>
 
             </div>

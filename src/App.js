@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import './main.scss';
 import Header from './components/Header'
 import Details from './components/Details'
-//import TopMovies from './components/TopMovies';
+import TopMovies from './components/TopMovies';
 import Loading from './components/Loading'
 import Footer from './components/Footer';
 import { connect } from 'react-redux'
-import { fetchMovie } from './actions'
+import { fetchAPI } from './actions'
 export class App extends Component {
   state={
     t:[],
@@ -17,13 +17,11 @@ export class App extends Component {
     //this.props.searchMovie(search)
   }
   UNSAFE_componentWillMount(){
-    //this.props.loading()
-    this.props.fetchMovie()
-    //this.props.topMovies()
+    this.props.fetchAPI()
   }
   
   render() { 
-    const { loading } = this.props.Movie;
+    const { loading } = this.props.Movies;
     if(loading){
       return(
         <Loading />
@@ -34,6 +32,7 @@ export class App extends Component {
         <div className="container">
           <Header search={this.search} />
           <Details />
+          <TopMovies />
           <Footer />
       </div>
       )
@@ -45,8 +44,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    fetchMovie : () => dispatch(fetchMovie())
-    //loading : () => dispatch(loading())
+    fetchAPI : () => dispatch(fetchAPI())
   }
 }
 export default connect(mapStateToProps , mapDispatchToProps)(App)

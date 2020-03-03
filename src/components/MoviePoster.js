@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react'
 
 export class MoviePoster extends Component {
     render() {
-        const mapProps = this.props.topList.map(topMovie => 
+        const topList = this.props.topList.Movies.topList
+        const mapProps = topList.map(topMovie => 
             <div className="movie-poster" key={topMovie.id}>
                  <div className="poster-pic">
                      <img src={`https://image.tmdb.org/t/p/w500/${topMovie.poster_path}`} alt={topMovie.title} />
