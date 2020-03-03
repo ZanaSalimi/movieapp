@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { searchLists } from '../actions'
+//import { searchLists } from '../actions'
 export class Search extends Component {
     state={
         search: '',
@@ -50,4 +50,4 @@ export class Search extends Component {
 const mapStateToProps = state => {
     return state
 }
-export default connect(mapStateToProps, { searchLists })(Search)
+export default connect(mapStateToProps)(Search)

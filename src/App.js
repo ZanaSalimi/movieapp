@@ -2,27 +2,29 @@ import React, { Component } from 'react'
 import './main.scss';
 import Header from './components/Header'
 import Details from './components/Details'
-import TopMovies from './components/TopMovies';
+//import TopMovies from './components/TopMovies';
 import Loading from './components/Loading'
 import Footer from './components/Footer';
 import { connect } from 'react-redux'
-import { fetchMovie, topMovies, searchMovie, loading } from './actions'
+import { fetchMovie } from './actions'
 export class App extends Component {
   state={
+    t:[],
     loading: false
   }
   search = (search) => {
-    this.props.loading()
-    this.props.searchMovie(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${search}&page=1&include_adult=false`, search)
+    //this.props.loading()
+    //this.props.searchMovie(search)
   }
   UNSAFE_componentWillMount(){
-    this.props.loading()
+    //this.props.loading()
     this.props.fetchMovie()
-    this.props.topMovies()
+    //this.props.topMovies()
   }
+  
   render() { 
-    const { isLoaded } = this.props;
-    if(isLoaded){
+    const { loading } = this.props.Movie;
+    if(loading){
       return(
         <Loading />
         )
@@ -32,7 +34,6 @@ export class App extends Component {
         <div className="container">
           <Header search={this.search} />
           <Details />
-          <TopMovies />
           <Footer />
       </div>
       )
@@ -40,14 +41,12 @@ export class App extends Component {
   }
 }
 const mapStateToProps = state => {
-  console.log(state)
   return state
 }
 const mapDispatchToProps = dispatch => {
   return {
-    fetchMovie : () => dispatch(fetchMovie()),
-    topMovies : () => dispatch(topMovies()),
-    loading : () => dispatch(loading())
+    fetchMovie : () => dispatch(fetchMovie())
+    //loading : () => dispatch(loading())
   }
 }
 export default connect(mapStateToProps , mapDispatchToProps)(App)
