@@ -6,20 +6,14 @@ import TopMovies from './components/TopMovies';
 import Loading from './components/Loading'
 import Footer from './components/Footer';
 import { connect } from 'react-redux'
-import { fetchAPI } from './actions'
+import { fetchAPI, searchMovie } from './actions'
 export class App extends Component {
-  state={
-    t:[],
-    loading: false
-  }
-  search = (search) => {
-    //this.props.loading()
-    //this.props.searchMovie(search)
-  }
+  /*search = (search) => {
+    this.props.searchMovie(search)
+  }*/
   UNSAFE_componentWillMount(){
     this.props.fetchAPI()
   }
-  
   render() { 
     const { loading } = this.props.Movies;
     if(loading){
@@ -44,7 +38,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAPI : () => dispatch(fetchAPI())
+    fetchAPI : () => dispatch(fetchAPI()),
+    //searchMovie : () => dispatch(searchMovie('Fight Club'))
   }
 }
 export default connect(mapStateToProps , mapDispatchToProps)(App)

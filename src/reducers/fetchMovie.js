@@ -15,12 +15,12 @@ const fetchMovie = (state = initialState, action) => {
                 ...state,
                 topList: action.payload.results,
                 loading: false
-            }
-        /*case 'SEARCH_MOVIE':
-            return [
+            }/*
+        case 'SEARCH_MOVIE':
+            return {
                 ...state,
-                action.payload[0]
-            ]    */
+                Movie: action.payload[0]
+            }*/
         /*case 'LOADING':
             return{
                 ...state,
