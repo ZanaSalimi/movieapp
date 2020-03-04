@@ -38,7 +38,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAPI : () => dispatch(fetchAPI()),
+    fetchAPI : () => dispatch(fetchAPI(`https://api.themoviedb.org/3/movie/800?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)),
     //searchMovie : () => dispatch(searchMovie('Fight Club'))
   }
 }

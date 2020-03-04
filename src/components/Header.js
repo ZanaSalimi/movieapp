@@ -6,7 +6,7 @@ export class Header extends Component {
             <div>
                     <nav className="navbar navbar-expand-lg navbar-light">
                         <a className="navbar-brand" href="/">TMDB</a>
-                        <Search search={this.props.search} />
+                        <Search />
                     </nav>
             </div>
         )
