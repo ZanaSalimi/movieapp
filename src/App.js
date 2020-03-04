@@ -6,11 +6,9 @@ import TopMovies from './components/TopMovies';
 import Loading from './components/Loading'
 import Footer from './components/Footer';
 import { connect } from 'react-redux'
-import { fetchAPI, searchMovie } from './actions'
+import { fetchAPI } from './actions'
 export class App extends Component {
-  /*search = (search) => {
-    this.props.searchMovie(search)
-  }*/
+  
   UNSAFE_componentWillMount(){
     this.props.fetchAPI()
   }
@@ -39,7 +37,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchAPI : () => dispatch(fetchAPI(`https://api.themoviedb.org/3/movie/800?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)),
-    //searchMovie : () => dispatch(searchMovie('Fight Club'))
   }
 }
 export default connect(mapStateToProps , mapDispatchToProps)(App)

@@ -1,4 +1,4 @@
-import { FETCH_MOVIE, TOP_MOVIES, SEARCH_MOVIE, SEARCH_LIST,/* LOADING_MOVIE */} from './actionTypes'
+import { FETCH_MOVIE, TOP_MOVIES, SEARCH_MOVIE, LOADING } from './actionTypes'
 
 export const fetchAPI = (url) => async (dispatch) => {
     const e = await fetch(url)
@@ -26,18 +26,8 @@ export const searchMovie = (search) => dispatch => {
       })
     })
 }
-export const searchLists = (url) => dispatch => {
-  fetch(url)
-  .then(res => res.json())
-  .then(data => {
-    dispatch({
-      type: SEARCH_LIST,
-      payload: data.results.map(result => result)
-    })
-  })
-}
 export const loading = () => dispatch => {
   dispatch({
-    type: 'LOADING'
+    type: LOADING
   })
 }

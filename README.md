@@ -4,7 +4,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 and uses [TMDB](https://www.themoviedb.org/) API 
 
-![](https://github.com/ZanaSalimi/movieapp/blob/master/docs/Demo.gif)
+![](https://github.com/ZanaSalimi/movieapp/blob/master/public/Demo.gif)
 
 
 ## Installation

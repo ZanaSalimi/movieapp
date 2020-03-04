@@ -20,14 +20,10 @@ export class Search extends Component {
     movieSelect = (e) => {
         this.setState({ search: e.target.value })
         this.props.loading()
-        /*setTimeout(() => {
-            
-        }, 100);*/
         this.props.fetchAPI(`https://api.themoviedb.org/3/movie/${e.target.id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
-        console.log(e.target.id)
     }
     movieNames = () => {
-        if(this.props.Movies.searchMovies.length === 0){
+        if(this.state.search === ''){
                return ''
             }
         else{
@@ -52,4 +48,5 @@ export class Search extends Component {
 const mapStateToProps = state => {
     return state
 }
+
 export default connect(mapStateToProps, { searchMovie, fetchAPI, loading })(Search)
